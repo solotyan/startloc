@@ -28,11 +28,11 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        mouseX = Input.GetAxis("Mouse X") * sensitivtyMouse * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * sensitivtyMouse * Time.deltaTime;
+        mouseX += Input.GetAxis("Mouse X") * sensitivtyMouse * Time.deltaTime;
+        mouseY += Input.GetAxis("Mouse Y") * sensitivtyMouse * Time.deltaTime;
 
-        Player.transform.Rotate(new Vector3(0, mouseX, 0));
-        Camera.transform.Rotate(new Vector3(-mouseY, 0, 0));
+        Player.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
+        Camera.transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0f);
 
         float horizontal = 0;
         float vertical = 0;
